@@ -41,7 +41,7 @@ class TestBurger:
 
         burger_price = burger.get_price()
 
-        assert burger_price == mock_bun.price
+        assert burger_price == mock_bun.price * 2
     
     def test_get_price_with_bun_and_one_ingredient_success(self, burger, bun_mock, ingredient_filling_mock):
         burger.set_buns(bun_mock)

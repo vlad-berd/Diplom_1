@@ -24,4 +24,4 @@
 
 **Запуск автотестов и создание HTML-отчета о покрытии**
 
->  `$ pytest --cov=praktikum --cov-report=html`
+>  `$ pytest --cov=tests --cov-branch --cov-report=html`
