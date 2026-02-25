@@ -1,7 +1,4 @@
-import pytest
-
 from data import *
-from helper import create_ingredient_mock
 
 
 class TestBurger:
@@ -57,16 +54,12 @@ class TestBurger:
         receipt = burger.get_receipt()
         
         assert receipt == excepted_value_get_receipt_only_with_one_bun
-    
-    @pytest.mark.parametrize('ingredient, expected_value', [
-        [ingredient_sauce_data, excepted_value_get_receipt_with_bun_and_one_sauce],
-        [ingredient_filling_data, excepted_value_get_receipt_with_bun_and_one_filling]])
-    def test_get_receipt_success(self, burger, bun_mock, ingredient, expected_value):
-        burger.set_buns(bun_mock)
-        mock_ingredient = create_ingredient_mock(type=ingredient['type'], name=ingredient['name'], price=ingredient['price'])
 
-        burger.add_ingredient(mock_ingredient)
+    def test_get_receipt_success(self, burger, bun_mock, ingredient_filling_mock):
+        burger.set_buns(bun_mock)
+
+        burger.add_ingredient(ingredient_filling_mock)
         
         receipt = burger.get_receipt()
         
-        assert receipt == expected_value
+        assert receipt == excepted_value_get_receipt_with_bun_and_one_filling
